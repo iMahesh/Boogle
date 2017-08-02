@@ -1,3 +1,3 @@
 # boogle-game
 
-##  https://imahesh.github.io/boogle-gam
+##  https://imahesh.github.io/boogle-game/ 
