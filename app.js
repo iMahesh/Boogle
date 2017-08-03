@@ -77,70 +77,7 @@ function selectDie() {
     //to check where the die belong: corner, middle or somewhere else
     var selectionArray = findTheTypeOfDie(currentSelection);
     selectionArrays.push(selectionArray);
-    // console.log(selectionArrays[selectionArrays.length-2]);
-    // var temp =[];
-    // type.forEach(function(i){
-    //     temp.push(currentSelection - i);
-    // })
-    // console.log(temp);
-    //call the function depending on the type
-    doWork(currentSelection, selectionArrays[selectionArrays.length - 2], this);
-
-    // if (lastSelection === undefined) {
-    //     // toggle selected class for letters
-    //     // push letter to array
-    //     this.setAttribute("class", "selected");
-    //     if(this.innerHTML=='Q'){
-    //             currentWord.push(this.innerHTML);
-    //             currentWord.push('u');            
-    //         containsQ=false;                
-    //         }else{
-    //             currentWord.push(this.innerHTML);
-    //         }
-    //     lastSelection = currentSelection;
-    //     validSelections.push(currentSelection);
-    // } else if (currentSelection == lastSelection || currentSelection == (lastSelection + 1) || currentSelection == (lastSelection - 1) || currentSelection == (lastSelection + 4) || currentSelection == (lastSelection - 4) || currentSelection == (lastSelection + 5) || currentSelection == (lastSelection - 5) || currentSelection == (lastSelection + 6) || currentSelection == (lastSelection - 6)) {
-    //     // toggle selected class for letters
-    //     if (!this.classList.contains('selected')) {
-    //         // push letter to array
-    //         this.setAttribute("class", "selected");
-    //         if(this.innerHTML=='Q'){
-    //             currentWord.push(this.innerHTML);
-    //             currentWord.push('u');
-    //             console.log(currentWord);              
-    //         }else{
-    //             currentWord.push(this.innerHTML);
-    //         }
-    //         lastSelection = currentSelection;
-    //         validSelections.push(currentSelection);
-    //     } else if (currentSelection === validSelections[validSelections.length - 1]) {
-    //         // function to search for already selected letter and remove it
-    //         for (var i = currentWord.length; i >= 0; i--) {
-    //             if (currentWord[i] === this.innerHTML) {
-    //                 // unselect button css
-    //                 this.removeAttribute("class", "selected");
-    //                 // remove item
-    //                 if(currentWord[i]=='Q'){
-    //                 currentWord.splice(i, 2);                                                
-    //                 }else{currentWord.splice(i, 1);}
-    //                 validSelections.pop();
-    //                 currentSelection = validSelections[validSelections.length - 1];
-    //                 lastSelection = currentSelection;
-    //                 if(lastSelection==undefined){
-    //                     currentWord.pop();
-    //                     validSelections=[];
-    //                 }
-    //                 break;
-    //             }
-    //         }
-    //     } else {
-    //         alert('can\'t remove the selection');
-    //     }
-    // } else {
-    //     alert('Can\'t select this');
-    // }
-    // var wordDisplay = currentWord.join('');
-    // showCurrentWord.innerHTML = wordDisplay;
+    doValidation(currentSelection, selectionArrays[selectionArrays.length - 2], this);
 }
 //find the type of die function to check whether it is corner or middle or someother
 function findTheTypeOfDie(id) {
@@ -169,13 +106,6 @@ function findTheTypeOfDie(id) {
         }
         return result;
     } else if (types['middles'].includes(id)) {
-        // var middles = {
-        //     middleTop : [2,3,4],
-        //     middleRight : [10,15,20],
-        //     middleBottom : [22,23,24],
-        //     middleLeft : [6,11,16]
-        // }
-
         var result;
         // 2,3,4,6,10,11,15,16,20,22,23,24
         switch (id) {
@@ -202,8 +132,8 @@ function findTheTypeOfDie(id) {
     } else return [-1, -4, -5, -6, 1, 4, 5, 6];
 }
 
-function doWork(id, selectedArray, element) {
-    console.log(selectedArray);
+function doValidation(id, selectedArray, element) {
+    // console.log(selectedArray);
     if (lastSelection === undefined) {
         // toggle selected class for letters
         // push letter to array
@@ -237,54 +167,32 @@ function doWork(id, selectedArray, element) {
             }
             lastSelection = currentSelection;
             validSelections.push(currentSelection);
-        }
-        // else if (currentSelection === validSelections[validSelections.length - 1]) {
-        //     // function to search for already selected letter and remove it
-        //     for (var i = currentWord.length; i >= 0; i--) {
-        //         if (currentWord[i] === element.innerHTML) {
-        //             // unselect button css
-        //             element.removeAttribute("class", "selected");
-        //             // remove item
-        //             if (currentWord[i] == 'Q') {
-        //                 currentWord.splice(i, 2);
-        //             } else { currentWord.splice(i, 1); }
-        //             validSelections.pop();
-        //             currentSelection = validSelections[validSelections.length - 1];
-        //             lastSelection = currentSelection;
-        //             if (lastSelection == undefined) {
-        //                 currentWord.pop();
-        //                 validSelections = [];
-        //             }
-        //             break;
-        //         }
-        //     }
-        // }
-        else {
+        } else {
             alert('can\'t remove the selection');
 
         }
-    } 
+    }
     else if (currentSelection === validSelections[validSelections.length - 1]) {
-            // function to search for already selected letter and remove it
-            for (var i = currentWord.length; i >= 0; i--) {
-                if (currentWord[i] === element.innerHTML) {
-                    // unselect button css
-                    element.removeAttribute("class", "selected");
-                    // remove item
-                    if (currentWord[i] == 'Q') {
-                        currentWord.splice(i, 2);
-                    } else { currentWord.splice(i, 1); }
-                    validSelections.pop();
-                    currentSelection = validSelections[validSelections.length - 1];
-                    lastSelection = currentSelection;
-                    if (lastSelection == undefined) {
-                        currentWord.pop();
-                        validSelections = [];
-                    }
-                    break;
+        // function to search for already selected letter and remove it
+        for (var i = currentWord.length; i >= 0; i--) {
+            if (currentWord[i] === element.innerHTML) {
+                // unselect button css
+                element.removeAttribute("class", "selected");
+                // remove item
+                if (currentWord[i] == 'Q') {
+                    currentWord.splice(i, 2);
+                } else { currentWord.splice(i, 1); }
+                validSelections.pop();
+                currentSelection = validSelections[validSelections.length - 1];
+                lastSelection = currentSelection;
+                if (lastSelection == undefined) {
+                    currentWord.pop();
+                    validSelections = [];
                 }
+                break;
             }
-        } 
+        }
+    }
     else {
         alert('Can\'t select this');
         selectionArrays.pop();
@@ -305,7 +213,7 @@ function resetWord() {
     currentSelection = 0;
     lastSelection = undefined;
     validSelections = [];
-
+    selectionArrays = [];
     cell1.innerHTML = currentWord.join('').toLowerCase();
     cell2.innerHTML = score;
     totalScoreHolder.innerHTML = totalScore;
