@@ -1,3 +1,13 @@
+// apply click event for selection
+for (var i = 0; i < allDie.length; i++) {
+    allDie[i].addEventListener('click', selectDie);
+    if (i % 2 == 0) {
+        allDie[i].classList.add('animated', 'bounceInLeft');
+    } else {
+        allDie[i].classList.add('animated', 'bounceInRight');
+    }
+}
+
 // build random dice generator
 (function randomizer() {
     for (var i = 0; i < dice.length; i++) {
