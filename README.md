@@ -1,4 +1,4 @@
-##  https://imahesh.github.io/boogle-game/ 
+##  https://imahesh.github.io/boogle/ 
 
 Boggle Project
 ==============
