@@ -168,7 +168,11 @@ function doValidation(id, selectedArray, element) {
             lastSelection = currentSelection;
             validSelections.push(currentSelection);
         } else {
-            alert('can\'t remove the selection');
+            //alert('can\'t remove the selection');
+            element.classList.add('animated', 'shake', 'make-red');
+            var timeOut = setTimeout(function () {
+                element.classList.remove('animated', 'shake', 'make-red');
+            }, 700);
 
         }
     }
@@ -194,7 +198,12 @@ function doValidation(id, selectedArray, element) {
         }
     }
     else {
-        alert('Can\'t select this');
+        //alert('Can\'t select this');
+        element.classList.remove('animate','bounceInLeft','bounceInRight');
+        element.classList.add('animated', 'shake', 'make-red');
+        var timeOut = setTimeout(function () {
+            element.classList.remove('animated', 'shake', 'make-red');
+        }, 700);
         selectionArrays.pop();
     }
     var wordDisplay = currentWord.join('');
@@ -203,8 +212,12 @@ function doValidation(id, selectedArray, element) {
 // apply click event for selection
 for (var i = 0; i < allDie.length; i++) {
     allDie[i].addEventListener('click', selectDie);
+    if (i % 2 == 0) {
+        allDie[i].classList.add('animated', 'bounceInLeft');
+    } else {
+        allDie[i].classList.add('animated', 'bounceInRight');
+    }
 }
-
 // reset word after submit
 function resetWord() {
     var row = table.insertRow(1);
