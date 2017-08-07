@@ -1,10 +1,7 @@
-"use strict";
-var TypeFinder = (function () {
-    function TypeFinder() {
-    }
-    TypeFinder.findTheTypeOfDie = function (id) {
+class TypeFinder {
+   static findTheTypeOfDie(id) {
         if (constants.types['corners'].includes(id)) {
-            var result = void 0;
+            let result;
             // 1,5,21,25 
             switch (id) {
                 case 1:
@@ -17,7 +14,7 @@ var TypeFinder = (function () {
                     break;
                 case 21:
                     result = "cornerLB";
-                    result = [-1, 4, 5];
+                    result = [-1, 4, 5]
                     break;
                 case 25:
                     result = "cornerRB";
@@ -27,16 +24,15 @@ var TypeFinder = (function () {
                     alert("Can't find the type of corner");
             }
             return result;
-        }
-        else if (constants.types['middles'].includes(id)) {
-            var result = void 0;
+        } else if (constants.types['middles'].includes(id)) {
+            let result;
             // 2,3,4,6,10,11,15,16,20,22,23,24
             switch (id) {
                 case 2:
                 case 3:
                 case 4:
                     result = "middleTop";
-                    result = [-1, -4, -5, -6, 1];
+                    result = [-1, -4, -5, -6, 1]
                     break;
                 case 10:
                 case 15:
@@ -48,21 +44,19 @@ var TypeFinder = (function () {
                 case 23:
                 case 24:
                     result = "middleBottom";
-                    result = [-1, 1, 4, 5, 6];
+                    result = [-1, 1, 4, 5, 6]
                     break;
                 case 6:
                 case 11:
                 case 16:
                     result = "middleLeft";
-                    result = [-1, -5, -6, 4, 5];
+                    result = [-1, -5, -6, 4, 5]
                     break;
                 default:
                     alert("can't find the type of middle");
             }
             return result;
-        }
-        else
-            return [-1, -4, -5, -6, 1, 4, 5, 6];
-    };
-    return TypeFinder;
-}());
+        } else return [-1, -4, -5, -6, 1, 4, 5, 6];
+    }
+
+}

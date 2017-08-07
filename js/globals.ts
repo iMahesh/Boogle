@@ -1,6 +1,5 @@
-"use strict";
-var globals = {
-    // variable for total score
+const globals={
+        // variable for total score
     totalScore: 0,
     currentWord: [],
     // var last selected, current selected, all valid selections 
@@ -10,4 +9,4 @@ var globals = {
     validSelections: [],
     containsQ: false,
     selectionArrays: []
-};
+}

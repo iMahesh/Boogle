@@ -1,2 +1,2 @@
 "use strict";
-const game = new Game();
+var game = new Game();

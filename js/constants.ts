@@ -1,5 +1,4 @@
-"use strict";
-var constants = {
+const constants = {
     dice: [
         "aaafrs",
         "aaeeee",
@@ -27,6 +26,7 @@ var constants = {
         "nootuw",
         "ooottu"
     ],
+
     totalScoreHolder: document.querySelector('#total-score'),
     // get the entire dice grid
     diceGrid: document.querySelector('.dice'),
@@ -42,4 +42,4 @@ var constants = {
     allDie: document.querySelectorAll('.dice button'),
     // get div for current word display
     showCurrentWord: document.querySelector('#current-word')
-};
+}
